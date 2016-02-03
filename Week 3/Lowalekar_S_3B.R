@@ -19,7 +19,7 @@ paste(missing, " bird strikes did not have a “Reported: Date” assigned", sep
 MaxStrikes <- function(birdStrikes){
   birdStrikes$Reported..Date <- as.Date(birdStrikes$Reported..Date, "%m/%d/%Y")
   #converting the values to dates
-  Year <- as.numeric(format(birdStrikes$Reported..Date, "%Y"))
+  Year <<- as.numeric(format(birdStrikes$Reported..Date, "%Y"))
   #extracting just the years
   maxYear <- names(which.max(table(Year)))
   #returning the most recurring year
@@ -42,17 +42,23 @@ freq
 #   dataframe AirlineStrikes as an argument, and returns the airline that has the most bird strikes.
 
 
-airlineFunc <- function(birdStrikes){
+AirlineFunc <- function(birdStrikes){
+  #import data into AirlineStrikes as data frame using table() which gives frequency
   AirlineStrikes <<- as.data.frame(table(birdStrikes$Aircraft..Airline.Operator))
   return(AirlineStrikes)
 }
 
 MaxAir <- function(AirlineStrikes){
-  
-  
+  #sorting the data in descending order of frequency
+  SortedStrikes <- AirlineStrikes[order(-AirlineStrikes[,2]),]
+  #selecting the second row as 1st is unknown
+  return(paste(SortedStrikes[2,1],"is the airline that has the most bird strikes."))
 }
 
-
+#call AirlineFunc
+AirlineFunc(birdStrikes)
+#call MaxAir
+MaxAir(AirlineStrikes)
 
 
 
