@@ -32,10 +32,15 @@ MaxStrikes(birdStrikes)
 #3. How many bird strikes were there for each year? Place the result into a data frame.
 
 #to count the frequency of bird strikes each year, we tabulate "Year" and represent it as a DF
-freq <- as.data.frame(table(Year))
+FreqStrike <- function(Year){
+  freq <- as.data.frame(table(Year)) 
+  #output
+  return(freq)
+}
 
-#output
-freq
+
+#function call 
+FreqStrike(Year)
 
 #4. Write a function that calculates the number of birds strikes per airline and then put those 
 #   results into a dataframe called AirlineStrikes. Write another function that accepts the 
