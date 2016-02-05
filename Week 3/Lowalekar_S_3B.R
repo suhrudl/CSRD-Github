@@ -68,6 +68,30 @@ AirlineFunc(birdStrikes)
 #call MaxAir
 MaxAir(AirlineStrikes)
 
+#5. In BlackBoard comments 
+
+#6. Choose one of your functions and use system.time() to measure the
+#   execution time for the original sized data, 2 times the original size and 4 times the
+#   original size by duplicating the data set. Do the measured results match your expected
+#   results reported in answer 5? Can you explain why the answers may vary?
+
+rm(birdStrikes) 
+LoadData()
+#original data 
+system.time(AirlineFunc(birdStrikes)) #user 0.008  system 0.001 elapsed 0.008
+system.time(MaxAir(AirlineStrikes)) #user 0 system 0 elapsed 0
 
 
+#2x data
+birdStrikes2x <- rbind(birdStrikes, birdStrikes)
+system.time(AirlineFunc(birdStrikes2x)) #user 0.014 system 0.001 elapsed 0.015
+system.time(MaxAir(AirlineStrikes)) #user 0 system 0 elapsed 0
 
+#4x data 
+birdStrikes4x <- rbind(birdStrikes2x, birdStrikes2x)
+system.time(AirlineFunc(birdStrikes4x)) #user 0.027 system 0.002 elapsed 0.030
+system.time(MaxAir(birdStrikes)) #user 0 system 0 elapsed 0
+
+#as expected, the measured times are linearly increasing in complexity (approximately), 
+#as the theoreticized results. The slight variation is introduced by the approximations 
+#to linear complexity of the inbuilt R functions.
