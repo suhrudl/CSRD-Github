@@ -13,8 +13,6 @@ LoadData <- function(){
   birdStrikes <- read.csv("Bird Strikes 2.csv", header = TRUE, sep = ",", stringsAsFactors = FALSE)
 }
 
-birdStrikes <- read.csv("Bird Strikes 2.csv", header = TRUE, sep = ",", stringsAsFactors = FALSE)
-#loading into csv
 missing <- length(which(birdStrikes$Reported..Date == ""))
 #there are no NA values, instead there are "" blank values
 paste(missing, " bird strikes did not have a “Reported: Date” assigned", sep = "")
