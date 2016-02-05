@@ -7,6 +7,11 @@ rm(list=ls())
 
 #using data frame, as it is a tabular data and the columns have different datatypes so matrix cannot
 #be used
+LoadData <- function(){
+  setwd("/Users/SuhrudL/Desktop/Coursework/Spring 16/Collect Store and Ret Data/Week 3")
+  #loading into csv
+  birdStrikes <- read.csv("Bird Strikes 2.csv", header = TRUE, sep = ",", stringsAsFactors = FALSE)
+}
 
 birdStrikes <- read.csv("Bird Strikes 2.csv", header = TRUE, sep = ",", stringsAsFactors = FALSE)
 #loading into csv
